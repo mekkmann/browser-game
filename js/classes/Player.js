@@ -5,6 +5,12 @@ class Player {
       y: 100,
     };
 
+    this.velocity = {
+      x: 0,
+      y: 0,
+    };
+
+    this.gravity = 1;
     this.width = 50;
     this.height = 100;
     this.sides = {
@@ -18,8 +24,17 @@ class Player {
   }
 
   update() {
-    if (this.sides.bottom < canvas.height) {
-      this.position.y++;
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+    this.sides.bottom = this.position.y + this.height;
+
+    // if at bottom of canvas
+    if (this.sides.bottom + this.velocity.y >= canvas.height) {
+      this.velocity.y = 0;
+    }
+    // if above bottom of canvas
+    if (this.sides.bottom + this.velocity.y < canvas.height) {
+      this.velocity.y += this.gravity;
       this.sides.bottom = this.position.y + this.height;
     }
   }
