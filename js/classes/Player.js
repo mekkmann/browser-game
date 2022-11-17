@@ -18,11 +18,13 @@ class Player {
     };
   }
 
+  // function to draw the player on the canvas
   draw() {
     c.fillStyle = "red";
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
+  // updates player position/velocity according to input
   update() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
