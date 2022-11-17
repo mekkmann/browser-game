@@ -5,7 +5,6 @@ window.addEventListener("keydown", (event) => {
       if (player.velocity.y === 0) {
         player.velocity.y = -15;
       }
-
       break;
     // move player to the left
     case "a":

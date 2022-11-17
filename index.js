@@ -18,6 +18,32 @@ const player = new Player({
   collisionBlocks,
   imgSrc: "./images/king/idle.png",
   frames: 11,
+  animations: {
+    idleRight: {
+      frames: 11,
+      frameBuffer: 2,
+      loop: true,
+      imgSrc: "./images/king/idle.png",
+    },
+    idleLeft: {
+      frames: 11,
+      frameBuffer: 2,
+      loop: true,
+      imgSrc: "./images/king/idleLeft.png",
+    },
+    runRight: {
+      frames: 8,
+      frameBuffer: 2,
+      loop: true,
+      imgSrc: "./images/king/runRight.png",
+    },
+    runLeft: {
+      frames: 8,
+      frameBuffer: 2,
+      loop: true,
+      imgSrc: "./images/king/runLeft.png",
+    },
+  },
 });
 
 const keys = {
@@ -40,10 +66,20 @@ function animate() {
   });
 
   if (keys.d.pressed) {
-    player.velocity.x = 4;
-  }
-  if (keys.a.pressed) {
-    player.velocity.x = -4;
+    player.switchSprite("runRight");
+    player.velocity.x = 5;
+    player.lastDirection = "right";
+  } else if (keys.a.pressed) {
+    player.switchSprite("runLeft");
+    player.velocity.x = -5;
+    player.lastDirection = "left";
+  } else {
+    if (player.lastDirection === "left") {
+      player.switchSprite("idleLeft");
+    }
+    if (player.lastDirection === "right") {
+      player.switchSprite("idleRight");
+    }
   }
   player.draw();
   player.update();
