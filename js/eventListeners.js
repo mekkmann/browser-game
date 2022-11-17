@@ -19,6 +19,21 @@ window.addEventListener("keydown", (event) => {
           player.velocity.y = 0;
           player.preventInput = true;
           player.switchSprite("enterDoor");
+          door.play();
+          gsap.to(overlay, {
+            opacity: 1,
+            onComplete: () => {
+              level++;
+              if (levels[level] === undefined) {
+                level = 1;
+              }
+              levels[level].init();
+              gsap.to(overlay, {
+                opacity: 0,
+              });
+              player.preventInput = false;
+            },
+          });
           return;
         }
       }

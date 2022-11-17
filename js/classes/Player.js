@@ -47,6 +47,7 @@ class Player extends Sprite {
     this.frames = this.animations[animName].frames;
     this.frameBuffer = this.animations[animName].frameBuffer;
     this.loop = this.animations[animName].loop;
+    this.currentAnimation = this.animations[animName];
   }
 
   handleInput(keys) {
