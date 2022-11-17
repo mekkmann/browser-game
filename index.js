@@ -33,18 +33,31 @@ const player = new Player({
     },
     runRight: {
       frames: 8,
-      frameBuffer: 2,
+      frameBuffer: 3,
       loop: true,
       imgSrc: "./images/king/runRight.png",
     },
     runLeft: {
       frames: 8,
-      frameBuffer: 2,
+      frameBuffer: 3,
       loop: true,
       imgSrc: "./images/king/runLeft.png",
     },
   },
 });
+const doors = [
+  new Sprite({
+    position: {
+      x: 751,
+      y: 386 - 114,
+    },
+    imgSrc: "./images/doorOpen.png",
+    frames: 5,
+    frameBuffer: 5,
+    loop: false,
+    autoPlay: false,
+  }),
+];
 
 const keys = {
   w: {
@@ -63,6 +76,9 @@ function animate() {
   backgroundLevel1.draw();
   collisionBlocks.forEach((block) => {
     block.draw();
+  });
+  doors.forEach((door) => {
+    door.draw();
   });
 
   if (keys.d.pressed) {

@@ -1,5 +1,13 @@
 class Sprite {
-  constructor({ position, imgSrc, frames = 1, animations }) {
+  constructor({
+    position,
+    imgSrc,
+    frames = 1,
+    animations,
+    frameBuffer = 2,
+    loop = true,
+    autoPlay = true,
+  }) {
     this.position = position;
     this.image = new Image();
     this.image.onload = () => {
@@ -12,8 +20,10 @@ class Sprite {
     this.frames = frames;
     this.currentFrame = 0;
     this.elapsedFrames = 0;
-    this.frameBuffer = 2;
+    this.frameBuffer = frameBuffer;
     this.animations = animations;
+    this.loop = loop;
+    this.autoPlay = autoPlay;
 
     if (this.animations) {
       for (let key in this.animations) {
@@ -48,14 +58,19 @@ class Sprite {
     this.updateFrames();
   }
 
+  play() {
+    this.autoPlay = true;
+  }
+
   updateFrames() {
+    if (!this.autoPlay) return;
+
     this.elapsedFrames++;
 
-    if (this.elapsedFrames % this.frameBuffer) {
+    if (this.elapsedFrames % this.frameBuffer === 0) {
       if (this.currentFrame < this.frames - 1) {
         this.currentFrame++;
-      }
-      if (this.currentFrame >= this.frames - 1) {
+      } else if (this.loop) {
         this.currentFrame = 0;
       }
     }
