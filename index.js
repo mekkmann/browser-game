@@ -43,6 +43,12 @@ const player = new Player({
       loop: true,
       imgSrc: "./images/king/runLeft.png",
     },
+    enterDoor: {
+      frames: 8,
+      frameBuffer: 4,
+      loop: false,
+      imgSrc: "./images/king/enterDoor.png",
+    },
   },
 });
 const doors = [
@@ -81,22 +87,7 @@ function animate() {
     door.draw();
   });
 
-  if (keys.d.pressed) {
-    player.switchSprite("runRight");
-    player.velocity.x = 5;
-    player.lastDirection = "right";
-  } else if (keys.a.pressed) {
-    player.switchSprite("runLeft");
-    player.velocity.x = -5;
-    player.lastDirection = "left";
-  } else {
-    if (player.lastDirection === "left") {
-      player.switchSprite("idleLeft");
-    }
-    if (player.lastDirection === "right") {
-      player.switchSprite("idleRight");
-    }
-  }
+  player.handleInput(keys);
   player.draw();
   player.update();
 }

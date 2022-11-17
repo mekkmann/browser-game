@@ -1,4 +1,7 @@
 window.addEventListener("keydown", (event) => {
+  if (player.preventInput) {
+    return;
+  }
   switch (event.key) {
     // make player jump
     case "w":
@@ -12,7 +15,10 @@ window.addEventListener("keydown", (event) => {
           player.hitbox.position.y + player.hitbox.height >= door.position.y &&
           player.hitbox.position.y <= door.position.y + door.height
         ) {
-          console.log("at door");
+          player.velocity.x = 0;
+          player.velocity.y = 0;
+          player.preventInput = true;
+          player.switchSprite("enterDoor");
           return;
         }
       }
