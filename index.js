@@ -17,6 +17,7 @@ const collisionBlocks = parsedCollisions.createObjectsFrom2DArray();
 const player = new Player({
   collisionBlocks,
   imgSrc: "./images/king/idle.png",
+  frames: 11,
 });
 
 const keys = {
