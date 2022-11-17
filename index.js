@@ -4,9 +4,6 @@ const c = canvas.getContext("2d");
 canvas.width = 1024;
 canvas.height = 576;
 
-c.fillStyle = "white";
-c.fillRect(0, 0, canvas.width, canvas.height);
-
 const backgroundLevel1 = new Sprite({
   position: {
     x: 0,
@@ -14,8 +11,13 @@ const backgroundLevel1 = new Sprite({
   },
   imgSrc: "./images/backgroundLevel1.png",
 });
+const parsedCollisions = collisionLevel1.parse2D();
+const collisionBlocks = parsedCollisions.createObjectsFrom2DArray();
 
-const player = new Player();
+const player = new Player({
+  collisionBlocks,
+  imgSrc: "./images/king/idle.png",
+});
 
 const keys = {
   w: {

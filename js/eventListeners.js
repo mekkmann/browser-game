@@ -3,7 +3,7 @@ window.addEventListener("keydown", (event) => {
     // make player jump
     case "w":
       if (player.velocity.y === 0) {
-        player.velocity.y = -20;
+        player.velocity.y = -15;
       }
 
       break;
