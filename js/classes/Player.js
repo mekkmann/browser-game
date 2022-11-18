@@ -26,7 +26,7 @@ class Player extends Sprite {
 
     this.checkForHorizontalCollisions();
 
-    this.applyGravity();
+    this.applyForce();
 
     this.updateHitbox();
 
@@ -54,7 +54,9 @@ class Player extends Sprite {
     if (this.preventInput) {
       return;
     }
-    if (keys.d.pressed) {
+    if (keys.k.pressed) {
+      player.fire();
+    } else if (keys.d.pressed) {
       player.switchSprite("runRight");
       player.velocity.x = 5;
       player.lastDirection = "right";
@@ -83,7 +85,7 @@ class Player extends Sprite {
     };
   }
 
-  applyGravity() {
+  applyForce() {
     this.velocity.y += this.gravity;
     this.position.y += this.velocity.y;
   }

@@ -58,7 +58,15 @@ class Sprite {
     );
     this.updateFrames();
   }
-
+  // applyForce(proj) {
+  //   proj.velocity.y += proj.gravity;
+  //   proj.position.y += proj.velocity.y;
+  // }
+  fire() {
+    this.velocity.y += this.gravity;
+    this.position.y += this.velocity.y;
+    console.log(this.position.x, this.position.y);
+  }
   play() {
     this.autoPlay = true;
   }
