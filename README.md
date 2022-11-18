@@ -18,4 +18,4 @@ This was the first project I started, mostly to get a feel for GameDev in js and
 Done!
 
 #### Take a Look at: 
-[Project 2/2](https://github.com/mekkmann/browser-game)
+[Project 2/2](https://github.com/mekkmann/fullstack-game)
