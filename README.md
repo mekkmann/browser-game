@@ -1,7 +1,8 @@
-# PHGameName
+# 2D-platformer
 
-### (24h-GameJam for an application process. Deadline: 11/17-22 ~11AM)
+### (24h-GameJam for an application process. Project 1/2. Deadline: 11/17-22 ~11AM)
 
-<br/>
+
 
 ## Fullstack Game
+Fun challenge, I'm not that used to js and especially not js-gamedev in the browser
