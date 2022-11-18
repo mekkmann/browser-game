@@ -54,9 +54,8 @@ class Player extends Sprite {
     if (this.preventInput) {
       return;
     }
-    if (keys.k.pressed) {
-      player.fire();
-    } else if (keys.d.pressed) {
+
+    if (keys.d.pressed) {
       player.switchSprite("runRight");
       player.velocity.x = 5;
       player.lastDirection = "right";
